@@ -1,0 +1,59 @@
+﻿@page
+@model Endpoint.Site.Pages.CreateModel
+@{
+}
+
+<h1>Create New</h1>
+<div class="row">
+    <form asp-page="Create" method="post" enctype="multipart/form-data">
+
+        <div class="table-responsive">
+            <table class="table">
+
+                <thead>
+                    <tr>
+
+
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Publishing Year</th>
+                        <th>Cover</th>
+                        
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <tr>
+                        
+                        <td><input asp-for="bookDto.Title" class="form-control" /></td>
+                        <td><input asp-for="bookDto.Author" class="form-control" /></td>
+                        <td><input asp-for="bookDto.Publisher" class="form-control" /></td>
+                        <td><input asp-for="bookDto.PublishingYear" class="form-control" /></td>
+                        <td>
+                               
+                                <div class="custom-file">
+                                    <input asp-for="uploadFile" class="custom-file-input form-control" />
+
+                                    <label class="custom-file-label">Cover</label>
+                                </div>
+                            
+                        </td>
+                        
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+        <button type="submit" class="btn btn-primary" > Insert</button>
+        
+
+    </form>
+</div>
+

@@ -1,0 +1,76 @@
+﻿@page
+@model Endpoint.Site.Pages.UpdateModel
+@{
+}
+
+<form asp-page="Update" method="post" enctype="multipart/form-data">
+
+    <div class="table-responsive">
+        <table class="table">
+
+            <thead>
+                <tr>
+
+
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Publishing Year</th>
+                    <th>Cover</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr>
+                    <input asp-for="bookDto.ID" value="@Model.bookDto.ID"  type="hidden" class="form-control" />
+
+                    <td><input asp-for="bookDto.Title" value="@Model.bookDto.Title" class="form-control" />
+
+                    <td><input asp-for="bookDto.Author" value="@Model.bookDto.Author" class="form-control" />
+
+                    <td><input asp-for="bookDto.Publisher" value="@Model.bookDto.Publisher" class="form-control" />
+
+                    <td><input asp-for="bookDto.PublishingYear" value="@Model.bookDto.PublishingYear" class="form-control" />
+
+                    <td>
+                        @if (Model.bookDto.Cover != null)
+                        {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.bookDto.Cover)"
+                             alt="No Cover"
+                             width="80"
+                             class="img-thumbnail">
+                        }
+
+                        else
+                        {
+                            <img src=""
+                                 alt="No Cover"
+                                 class="img-thumbnail"
+                                 width="80">
+                        }
+                        
+
+                        <div class="custom-file col-md-8">
+                            <input asp-for="upDateFile"  class="custom-file-input form-control" />
+
+                            <label  class="custom-file-label">Change To</label>
+                        </div>
+
+                    </td>
+
+
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <button type="submit" class="btn btn-warning"> Update</button>
+
+
+</form>

@@ -1,0 +1,13 @@
+﻿@page
+@model Endpoint.Site.Pages.ShowCoverModel
+@{
+}
+<a asp-page="Index">Close ...</a>
+<hr />
+<img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.book.Cover)"
+     alt="No Cover"
+     width="80%"
+     
+     class="img-thumbnail">
+<hr />
+<a asp-page="Index">Close ...</a>

@@ -1,0 +1,87 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+</div>
+<div class='card'>
+    <div class='card-header'>
+        <b>BOOK-List</b>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <a asp-page="Create">Create New</a>
+            </div>
+            
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table"
+                   *ngIf="cars && cars.length">
+                <thead>
+                    <tr>
+                        <th>
+                            Cover
+                        </th>
+                        <th>BOOK ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Publishing Year</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.books)
+                    {
+                    <tr>
+                        <td>
+
+                            @if (item.Cover != null)
+                            {
+                            <a asp-page="ShowCover" asp-route-Id="@item.ID">
+                                
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Cover)"
+                                     alt="No Cover"
+                                     width="80"
+                                     class="img-thumbnail">
+                            </a>
+                             }
+                                
+                            else
+                            {
+                                <img src=""
+                                     alt="No Cover"
+                                     class="img-thumbnail"
+                                     width="80">
+                            }
+
+
+                        </td>
+                        <td>@item.ID</td>
+                        <td>@item.Title</td>
+                        <td>@item.Author</td>
+                        <td>@item.Publisher</td>
+                        <td>@item.PublishingYear</td>
+                        <td><a asp-page="Delete" asp-route-id="@item.ID">Delete</a>
+                            <b> | </b>
+                            <a asp-page="Update" asp-route-id="@item.ID">Update</a>
+                        </td>
+
+
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
